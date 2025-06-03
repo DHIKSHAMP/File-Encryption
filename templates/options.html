@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Action</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('https://i.pinimg.com/originals/c1/72/44/c17244bcaf526f0ed4915d8948bddb93.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px 30px;
+            border-radius: 15px;
+            width: 300px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: jumpIn 1s ease-out;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00bcd4;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+            transform: scale(1.1);
+        }
+
+        @keyframes jumpIn {
+            0% {
+                transform: translateY(-200%);
+                opacity: 0;
+            }
+            60% {
+                transform: translateY(30%);
+                opacity: 1;
+            }
+            80% {
+                transform: translateY(-10%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Choose an Action</h2>
+        <a href="{{ url_for('encrypt', filename=filename) }}"><button>Encrypt</button></a>
+        <a href="{{ url_for('decrypt_page', filename=filename) }}"><button>Decrypt</button></a>
+    </div>
+</body>
+</html>

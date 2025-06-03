@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Encrypted</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://www.fastcapital360.com/wp-content/uploads/2021/03/graphic_01-2.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30%;
+            min-height: 250px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px 20px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        h2, p {
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid rgba(255,255,255,0.75);
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white }
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00bcd4;
+            color: white;
+            cursor: pointer;
+            animation: slideInFromRight 1s ease-out;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>File Encrypted Successfully</h2>
+        <p>Key (Save this to decrypt later!): {{ key }}</p>
+        <a href="{{ url_for('download', filename=encrypted_file) }}">
+            <button>Download Encrypted File</button>
+        </a>
+                <a href="{{ url_for('index') }}"><button>Back To Upload</button></a>
+    </div>
+</body>
+</html>

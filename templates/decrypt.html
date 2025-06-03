@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Decrypt File</title>
+    <style>
+        body 
+        {
+        margin: 0;
+        height: 100vh;
+        background: url('https://i.pinimg.com/originals/35/1f/17/351f171a117d6e978db0b6a5fd69993d.gif') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: flex-start; /* align left horizontally */
+        align-items: center;         /* center vertically */
+        padding-left: 40px;          /* space from left edge */
+        font-family: Arial, sans-serif;
+        color: white;
+        }
+
+        .container 
+        {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 30px 40px;
+        border-radius: 15px;
+        width: 350px;
+        animation: jumpInLeft 0.8s ease forwards;
+        box-sizing: border-box;
+        }
+       
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input[type="text"] {
+            padding: 12px 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 0;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00bcd4;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+            transform: scale(1.05);
+        }
+
+        .button-link 
+        {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px 0;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00bcd4;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .button-link:hover 
+        {
+            background-color: #0097a7;
+            transform: scale(1.05);
+        }
+
+
+        p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        p[style*="color: red"] {
+            color: #ff5555;
+        }
+
+        @keyframes jumpInLeft {
+            0% {
+                transform: translateX(-200%);
+                opacity: 0;
+            }
+            60% {
+                transform: translateX(30%);
+                opacity: 1;
+            }
+            80% {
+                transform: translateX(-10%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Key to Decrypt</h2>
+
+        <form action="/decrypt" method="post">
+            <input type="hidden" name="filename" value="{{ filename }}">
+            <input type="text" name="key" placeholder="Enter Decryption Key (16 hex digits)" required>
+            <button type="submit">Decrypt</button>
+            <a href="{{ url_for('index') }}" class="button-link">Back To Upload</a>
+
+
+        </form>
+
+        {% if decrypted_file %}
+            <p>File Decrypted Successfully</p>
+            <a href="{{ url_for('download', filename=decrypted_file) }}" class="button-link">Download Decrypted File</a>
+
+        {% elif error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
