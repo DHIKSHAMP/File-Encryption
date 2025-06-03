@@ -79,6 +79,10 @@ python sample.py
 ## 5. Open in browser
 Visit `http://127.0.0.1:5000` in your web browser to start using the app.
 
+# 📽️Output
+
+🌐 Download Here: [@OUTPUT](https://github.com/DHIKSHAMP/File-Encryption/blob/main/FILE-ENCRYPTION.mp4)
+
 # 🛠️ Tech Stack
 
 | Category         | Technology           |
